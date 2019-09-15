@@ -21,7 +21,6 @@ public class raspberry extends IMCallback
 {
 	private GpioController gpio = null;
 	private GpioPinDigitalOutput pin1 = null;
-	private static GpioPinDigitalInput pin2 = null;
 	
 	public raspberry()
 	{
@@ -31,8 +30,6 @@ public class raspberry extends IMCallback
         // creating the pin with parameter PinState.HIGH...
         // will instantly power up the pin...
         pin1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "PinLED", PinState.HIGH);
-		pin2 = gpio.provisionDigitalInputPin(RaspiPin.GPIO_04,"PinTC", PinPullResistance.PULL_DOWN);
-
 	}
 
 	public static void main(String[] args) throws Exception 
@@ -58,18 +55,8 @@ public class raspberry extends IMCallback
 				transID = IMUtil.getTransactionLongRoundKey4();
 
 				// Temp Teg value send...
-				tcpConnector.requestNumColecData("Temp", getValue(), new Date(), transID);
-				Thread.sleep(1000);
-
-				if(pin2.isLow())
-				{
-//					System.out.println("Not Detect !!");
-				}
-				else
-				{
-//					System.out.println("Detected !!");
-					tcpConnector.requestNumColecData("Touch", (Double)1.0, new Date(), transID);
-				}
+				tcpConnector.requestNumColecData("temperature", getValue(), new Date(), transID);
+				Thread.sleep(5000);
 			}
 
 		} catch(SdkException e) 
