@@ -33,7 +33,7 @@ JCPATH = -classpath $(OUTDIR):$(IOTMAKERS_SDK_LIBNAME):$(THIRDPARTY_LIB_PATH)/*
 # SOURCE TREE
 ###########################################
 JAVA_SOURCE = \
-	./Sample.java \
+	./raspberry.java \
 
 ###########################################
 # BUILD
