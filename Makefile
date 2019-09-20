@@ -15,7 +15,8 @@ THIRDPARTY_LIB_PATH = $(IOTMAKERS_SDK_HOME)/lib
 # FLAGs
 ###########################################
 OUTDIR = .
-JFLAGS = -g -Xlint
+JFLAGS = -g
+
 JDPATH = -d $(OUTDIR)
 
 JCPATH = -classpath $(OUTDIR):$(IOTMAKERS_SDK_LIBNAME):$(THIRDPARTY_LIB_PATH)/*
@@ -47,4 +48,4 @@ clean:
 	$(RM) *.class
 
 run:
-	$(JAVA) $(JCPATH) Sample
+	$(JAVA) $(JCPATH) raspberry
